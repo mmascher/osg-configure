@@ -21,16 +21,7 @@ class StorageConfiguration(BaseConfiguration):
         super(StorageConfiguration, self).__init__(*args, **kwargs)
         self.logger = logging.getLogger(__name__)
         self.log('StorageConfiguration.__init__ started')
-        self.options = {'se_available':
-                            configfile.Option(name='se_available',
-                                              opt_type=bool,
-                                              default_value=False,
-                                              mapping='OSG_STORAGE_ELEMENT'),
-                        'default_se':
-                            configfile.Option(name='default_se',
-                                              required=configfile.Option.OPTIONAL,
-                                              mapping='OSG_DEFAULT_SE'),
-                        'grid_dir':
+        self.options = {'grid_dir':
                             configfile.Option(name='grid_dir',
                                               default_value='/etc/osg/wn-client',
                                               required=configfile.Option.OPTIONAL,
@@ -40,23 +31,10 @@ class StorageConfiguration(BaseConfiguration):
                                               default_value='UNAVAILABLE',
                                               required=configfile.Option.OPTIONAL,
                                               mapping='OSG_APP'),
-                        'data_dir':
-                            configfile.Option(name='data_dir',
-                                              default_value='UNAVAILABLE',
-                                              required=configfile.Option.OPTIONAL,
-                                              mapping='OSG_DATA'),
                         'worker_node_temp':
                             configfile.Option(name='worker_node_temp',
                                               required=configfile.Option.OPTIONAL,
-                                              mapping='OSG_WN_TMP'),
-                        'site_read':
-                            configfile.Option(name='site_read',
-                                              required=configfile.Option.OPTIONAL,
-                                              mapping='OSG_SITE_READ'),
-                        'site_write':
-                            configfile.Option(name='site_write',
-                                              required=configfile.Option.OPTIONAL,
-                                              mapping='OSG_SITE_WRITE')}
+                                              mapping='OSG_WN_TMP')}
         self.config_section = "Storage"
         self.log('StorageConfiguration.__init__ completed')
 

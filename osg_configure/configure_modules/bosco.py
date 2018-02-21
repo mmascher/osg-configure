@@ -22,7 +22,6 @@ __all__ = ['BoscoConfiguration']
 class BoscoConfiguration(JobManagerConfiguration):
     """Class to handle attributes related to Bosco job manager configuration"""
 
-
     def __init__(self, *args, **kwargs):
         # pylint: disable-msg=W0142
         super(BoscoConfiguration, self).__init__(*args, **kwargs)

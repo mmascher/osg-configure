@@ -106,8 +106,6 @@ class SiteInformation(BaseConfiguration):
             self.log('SiteInformation.check_attributes completed')
             return attributes_ok
 
-
-
         # OSG_GROUP must be either OSG or OSG-ITB
         if self.options['group'].value not in ('OSG', 'OSG-ITB'):
             self.log("The group setting must be either OSG or OSG-ITB, got: %s" %
@@ -155,7 +153,6 @@ class SiteInformation(BaseConfiguration):
                      option='longitude',
                      level=logging.ERROR)
             attributes_ok = False
-
 
         # make sure that the email address is different from the default value
         if self.options['email'] == 'foo@my.domain':

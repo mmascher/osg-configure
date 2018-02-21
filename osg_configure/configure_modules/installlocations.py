@@ -25,13 +25,11 @@ class InstallLocations(BaseConfiguration):
                         'user_vo_map':
                             configfile.Option(name='user_vo_map',
                                               default_value='/var/lib/osg/user-vo-map',
-                                              required=configfile.Option.OPTIONAL,
-                                              mapping='OSG_USER_VO_MAP'),
+                                              required=configfile.Option.OPTIONAL),
                         'gridftp_log':
                             configfile.Option(name='gridftp_log',
                                               default_value='/var/log/gridftp.log',
-                                              required=configfile.Option.OPTIONAL,
-                                              mapping='OSG_GRIDFTP_LOG')}
+                                              required=configfile.Option.OPTIONAL)}
         self.config_section = 'Install Locations'
         self._self_configured = False
         self.log('InstallLocations.configure completed')

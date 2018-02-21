@@ -28,6 +28,7 @@ IGNORED_OPTIONS = [
     'cleanup_cron_time'
 ]
 
+
 class MiscConfiguration(BaseConfiguration):
     """Class to handle attributes and configuration related to miscellaneous services"""
 

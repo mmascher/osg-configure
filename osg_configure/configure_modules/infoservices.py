@@ -111,13 +111,13 @@ class InfoServicesConfiguration(BaseConfiguration):
         self._set_default_servers(configuration)
 
         self.get_options(configuration,
-                        ignore_options=['itb-ress-servers',
-                                        'itb-bdii-servers',
-                                        'osg-ress-servers',
-                                        'osg-bdii-servers',
-                                        'ress_servers',
-                                        'enabled',
-                                        'bdii_servers'])
+                         ignore_options=['itb-ress-servers',
+                                         'itb-bdii-servers',
+                                         'osg-ress-servers',
+                                         'osg-bdii-servers',
+                                         'ress_servers',
+                                         'enabled',
+                                         'bdii_servers'])
 
         self.ce_collectors = self._parse_ce_collectors(self.options['ce_collectors'].value)
 

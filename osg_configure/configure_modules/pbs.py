@@ -23,8 +23,7 @@ class PBSConfiguration(JobManagerConfiguration):
         # dictionary to hold information about options
         self.options = {'pbs_location':
                             configfile.Option(name='pbs_location',
-                                              default_value='/usr',
-                                              mapping='OSG_PBS_LOCATION'),
+                                              default_value='/usr'),
                         'accounting_log_directory':
                             configfile.Option(name='accounting_log_directory',
                                               required=configfile.Option.OPTIONAL,
@@ -61,11 +60,9 @@ class PBSConfiguration(JobManagerConfiguration):
 
         # set OSG_JOB_MANAGER and OSG_JOB_MANAGER_HOME
         self.options['job_manager'] = configfile.Option(name='job_manager',
-                                                        value='PBS',
-                                                        mapping='OSG_JOB_MANAGER')
+                                                        value='PBS')
         self.options['home'] = configfile.Option(name='job_manager_home',
-                                                 value=self.options['pbs_location'].value,
-                                                 mapping='OSG_JOB_MANAGER_HOME')
+                                                 value=self.options['pbs_location'].value)
 
         self.pbs_bin_location = os.path.join(self.options['pbs_location'].value, 'bin')
 

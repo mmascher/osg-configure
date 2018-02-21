@@ -24,8 +24,7 @@ class SlurmConfiguration(JobManagerConfiguration):
         # dictionary to hold information about options
         self.options = {'slurm_location':
                             configfile.Option(name='slurm_location',
-                                              default_value='/usr',
-                                              mapping='OSG_PBS_LOCATION'),
+                                              default_value='/usr'),
                         'db_host':
                             configfile.Option(name='db_host',
                                               required=configfile.Option.OPTIONAL,
@@ -79,11 +78,9 @@ class SlurmConfiguration(JobManagerConfiguration):
 
         # set OSG_JOB_MANAGER and OSG_JOB_MANAGER_HOME
         self.options['job_manager'] = configfile.Option(name='job_manager',
-                                                        value='SLURM',
-                                                        mapping='OSG_JOB_MANAGER')
+                                                        value='SLURM')
         self.options['home'] = configfile.Option(name='job_manager_home',
-                                                 value=self.options['slurm_location'].value,
-                                                 mapping='OSG_JOB_MANAGER_HOME')
+                                                 value=self.options['slurm_location'].value)
 
         self.slurm_bin_location = os.path.join(self.options['slurm_location'].value, 'bin')
 
@@ -110,7 +107,7 @@ class SlurmConfiguration(JobManagerConfiguration):
         if not validation.valid_location(self.options['slurm_location'].value):
             attributes_ok = False
             self.log("Non-existent location given: %s" %
-                     (self.options['slurm_location'].value),
+                     self.options['slurm_location'].value,
                      option='slurm_location',
                      section=self.config_section,
                      level=logging.ERROR)

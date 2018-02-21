@@ -21,23 +21,7 @@ class SquidConfiguration(BaseConfiguration):
         self.options = {'location':
                             configfile.Option(name='location',
                                               default_value='None',
-                                              mapping='OSG_SQUID_LOCATION'),
-                        'policy':
-                            configfile.Option(name='policy',
-                                              required=configfile.Option.OPTIONAL,
-                                              mapping='OSG_SQUID_POLICY'),
-                        'cache_size':
-                            configfile.Option(name='cache_size',
-                                              required=configfile.Option.OPTIONAL,
-                                              default_value=0,
-                                              opt_type=int,
-                                              mapping='OSG_SQUID_CACHE_SIZE'),
-                        'memory_size':
-                            configfile.Option(name='memory_size',
-                                              required=configfile.Option.OPTIONAL,
-                                              default_value=0,
-                                              opt_type=int,
-                                              mapping='OSG_SQUID_MEM_CACHE')}
+                                              mapping='OSG_SQUID_LOCATION')}
         self.config_section = 'Squid'
         self.log('SquidConfiguration.__init__ completed')
 
@@ -93,7 +77,7 @@ class SquidConfiguration(BaseConfiguration):
             self.log('SquidConfiguration.check_attributes completed')
             return attributes_ok
 
-        if (self.options['location'].value == 'None'):
+        if self.options['location'].value == 'None':
             self.log("location setting must be set, if site does not provide " +
                      "squid, please use UNAVAILABLE",
                      section=self.config_section,
@@ -101,7 +85,7 @@ class SquidConfiguration(BaseConfiguration):
                      level=logging.WARNING)
             return attributes_ok
 
-        if (self.options['location'].value.upper() == 'UNAVAILABLE'):
+        if self.options['location'].value.upper() == 'UNAVAILABLE':
             self.log("Squid location is set to UNAVAILABLE.  Although this is \n" +
                      "allowed, most jobs function better and use less bandwidth \n" +
                      "when a squid proxy is available",

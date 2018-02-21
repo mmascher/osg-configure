@@ -90,7 +90,7 @@ in your config.ini file."""
 
         self.check_config(configuration)
 
-        if (not configuration.has_section(self.config_section) and requirements_are_installed()):
+        if not configuration.has_section(self.config_section) and requirements_are_installed():
             self.log('CE probes installed but no Gratia section, auto-configuring gratia')
             self._auto_configure(configuration)
             self.log('GratiaConfiguration.parse_configuration completed')

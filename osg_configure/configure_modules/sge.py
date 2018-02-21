@@ -24,12 +24,10 @@ class SGEConfiguration(JobManagerConfiguration):
         self.log('SGEConfiguration.__init__ started')
         # option information
         self.options = {'sge_root':
-                            configfile.Option(name='sge_root',
-                                              mapping='OSG_SGE_ROOT'),
+                            configfile.Option(name='sge_root'),
                         'sge_cell':
                             configfile.Option(name='sge_cell',
-                                              default_value='default',
-                                              mapping='OSG_SGE_CELL'),
+                                              default_value='default'),
                         'sge_config':
                             configfile.Option(name='sge_config',
                                               default_value='/etc/sysconfig/gridengine'),
@@ -76,14 +74,11 @@ class SGEConfiguration(JobManagerConfiguration):
 
         # fill in values for sge_location and home
         self.options['job_manager'] = configfile.Option(name='job_manager',
-                                                        value='SGE',
-                                                        mapping='OSG_JOB_MANAGER')
+                                                        value='SGE')
         self.options['home'] = configfile.Option(name='job_manager_home',
-                                                 value=self.options['sge_root'].value,
-                                                 mapping='OSG_JOB_MANAGER_HOME')
+                                                 value=self.options['sge_root'].value)
         self.options['osg_sge_location'] = configfile.Option(name='sge_location',
-                                                             value=self.options['sge_root'].value,
-                                                             mapping='OSG_SGE_LOCATION')
+                                                             value=self.options['sge_root'].value)
 
         self.log('SGEConfiguration.parse_configuration completed')
 

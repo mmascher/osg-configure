@@ -23,8 +23,7 @@ class LSFConfiguration(JobManagerConfiguration):
         # dictionary to hold information about options
         self.options = {'lsf_location':
                             configfile.Option(name='lsf_location',
-                                              default_value='/usr',
-                                              mapping='OSG_LSF_LOCATION'),
+                                              default_value='/usr'),
                         'lsf_profile':
                             configfile.Option(name='lsf_profile',
                                               default_value=''),
@@ -66,11 +65,9 @@ class LSFConfiguration(JobManagerConfiguration):
         # set OSG_JOB_MANAGER_HOME
         # set OSG_JOB_MANAGER and OSG_JOB_MANAGER_HOME
         self.options['job_manager'] = configfile.Option(name='job_manager',
-                                                        value='LSF',
-                                                        mapping='OSG_JOB_MANAGER')
+                                                        value='LSF')
         self.options['home'] = configfile.Option(name='job_manager_home',
-                                                 value=self.options['lsf_location'].value,
-                                                 mapping='OSG_JOB_MANAGER_HOME')
+                                                 value=self.options['lsf_location'].value)
 
         self.lsf_bin_location = os.path.join(self.options['lsf_location'].value, 'bin')
 
@@ -98,7 +95,7 @@ class LSFConfiguration(JobManagerConfiguration):
         if not validation.valid_location(self.options['lsf_location'].value):
             attributes_ok = False
             self.log("Non-existent location given: %s" %
-                     (self.options['lsf_location'].value),
+                     self.options['lsf_location'].value,
                      option='lsf_location',
                      section=self.config_section,
                      level=logging.ERROR)
@@ -113,7 +110,7 @@ class LSFConfiguration(JobManagerConfiguration):
         if self.options['lsf_conf'].value and not validation.valid_directory(self.options['lsf_conf'].value):
             attributes_ok = False
             self.log("Non-existent directory given: %s" %
-                     (self.options['lsf_conf'].value),
+                     self.options['lsf_conf'].value,
                      option='lsf_conf',
                      section=self.config_section,
                      level=logging.ERROR)
@@ -121,7 +118,7 @@ class LSFConfiguration(JobManagerConfiguration):
         if not validation.valid_file(self.options['lsf_profile'].value):
             attributes_ok = False
             self.log("Non-existent location given: %s" %
-                     (self.options['lsf_profile'].value),
+                     self.options['lsf_profile'].value,
                      option='lsf_profile',
                      section=self.config_section,
                      level=logging.ERROR)

@@ -26,13 +26,11 @@ class CondorConfiguration(JobManagerConfiguration):
         self.config_section = "Condor"
         self.options = {'condor_location':
                             configfile.Option(name='condor_location',
-                                              default_value=utilities.get_condor_location(),
-                                              mapping='OSG_CONDOR_LOCATION'),
+                                              default_value=utilities.get_condor_location()),
                         'condor_config':
                             configfile.Option(name='condor_config',
                                               required=configfile.Option.OPTIONAL,
-                                              default_value=utilities.get_condor_config(),
-                                              mapping='OSG_CONDOR_CONFIG')}
+                                              default_value=utilities.get_condor_config())}
         self.condor_bin_location = None
         self.log('CondorConfiguration.__init__ completed')
 
@@ -61,11 +59,9 @@ class CondorConfiguration(JobManagerConfiguration):
 
         # set OSG_JOB_MANAGER and OSG_JOB_MANAGER_HOME
         self.options['job_manager'] = configfile.Option(name='job_manager',
-                                                        value='Condor',
-                                                        mapping='OSG_JOB_MANAGER')
+                                                        value='Condor')
         self.options['home'] = configfile.Option(name='job_manager_home',
-                                                 value=self.options['condor_location'].value,
-                                                 mapping='OSG_JOB_MANAGER_HOME')
+                                                 value=self.options['condor_location'].value)
 
         self.condor_bin_location = os.path.join(self.options['condor_location'].value, 'bin')
 
